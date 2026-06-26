@@ -20,11 +20,11 @@
       2
     ]
   },
-  "elapsed_seconds": 13.619167804718018,
+  "elapsed_seconds": 20.109084606170654,
   "rows": [
     {
-      "input": "../code/synthetic_finetuning/spatial_foggy.jpg",
-      "output": "spatial_foggy_defogged.png",
+      "input": "../spatial_foggyWeighted.jpg",
+      "output": "spatial_foggyWeighted_defogged.png",
       "status": "written"
     }
   ]

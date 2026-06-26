@@ -24,7 +24,7 @@ class FogPreset:
     saturation_mix: float
     noise_strength: float
     edge_veil_strength: float
-
+    paint_weight: float
 
 PRESETS: Dict[str, FogPreset] = {
     "light": FogPreset(
@@ -37,6 +37,7 @@ PRESETS: Dict[str, FogPreset] = {
         saturation_mix=0.24,
         noise_strength=0.010,
         edge_veil_strength=0.18,
+        paint_weight = 1,
     ),
     "medium": FogPreset(
         name="medium",
@@ -48,6 +49,7 @@ PRESETS: Dict[str, FogPreset] = {
         saturation_mix=0.32,
         noise_strength=0.014,
         edge_veil_strength=0.28,
+        paint_weight = 1,
     ),
     "heavy": FogPreset(
         name="heavy",
@@ -59,7 +61,9 @@ PRESETS: Dict[str, FogPreset] = {
         saturation_mix=0.42,
         noise_strength=0.020,
         edge_veil_strength=0.40,
+        paint_weight = 1,
     ),
+
 }
 
 
@@ -183,5 +187,4 @@ def synthesize_fog(
         rng = np.random.default_rng(seed + 17)
         noise = rng.normal(0.0, preset.noise_strength, size=foggy.shape).astype(np.float32)
         foggy = np.clip(foggy + noise, 0.0, 1.0)
-
-    return foggy
+   return foggy

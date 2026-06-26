@@ -25,7 +25,7 @@ from PIL import Image, ImageOps
 
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp"}
 DEFAULT_FOG_ROOT = Path("VerticalFilter_MediumFog_Redo_3-21-26_aligned")
-DEFAULT_ARCHIVE_ROOT = Path("archive_gt_matched")
+DEFAULT_ARCHIVE_ROOT = Path("ground_truth_matched")
 DEFAULT_OUT_DIR = Path("./PSD_calculation")
 
 

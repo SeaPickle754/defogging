@@ -17,7 +17,7 @@ Example validation:
 ```bash
 python fog_rgb_benchmark.py validate \
   --fog-root data/VerticalFilter_MediumFog_Redo_3-21-26_aligned \
-  --gt-root data/archive_gt_matched \
+  --gt-root data/ground_truth_matched \
   --run6-root path/to/run6_colleague_bundle/run6
 ```
 
@@ -27,7 +27,7 @@ Example one-model training:
 python fog_rgb_benchmark.py train-one \
   --model-key nafnet_fc \
   --fog-root data/VerticalFilter_MediumFog_Redo_3-21-26_aligned \
-  --gt-root data/archive_gt_matched \
+  --gt-root data/ground_truth_matched \
   --run6-root path/to/run6_colleague_bundle/run6 \
   --epochs 1 \
   --max-batches 1 \

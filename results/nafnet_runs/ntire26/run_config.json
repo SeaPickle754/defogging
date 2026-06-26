@@ -1,0 +1,36 @@
+{
+  "model_name": "nafnet_ntire26_supervised_finetune",
+  "model_type": "residual_rgb",
+  "dataset": "ntire26_nighttime_train_gt",
+  "device": "cuda",
+  "split_policy": "01-20 train, 21-23 validation, 24-25 held-out local test",
+  "patch_size": 256,
+  "patches_per_image": 20,
+  "batch_size": 4,
+  "epochs": 80,
+  "learning_rate": 6e-05,
+  "weight_decay": 0.0001,
+  "width": 32,
+  "middle_blocks": 12,
+  "enc_blocks": [
+    2,
+    2,
+    4,
+    8
+  ],
+  "dec_blocks": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "seed": 45,
+  "split_counts": {
+    "train": 20,
+    "val": 3,
+    "test": 2
+  },
+  "run_dir": "outputs/ntire26_from_fog_chamber_nafnet_20260603",
+  "init_checkpoint": "release-assets/fog_chamber_nafnet_model_state_20260615.pth",
+  "init_loaded": "release-assets/fog_chamber_nafnet_model_state_20260615.pth"
+}

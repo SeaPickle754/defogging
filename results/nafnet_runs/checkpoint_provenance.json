@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-06-03T12:35:40",
+  "source_checkpoint": "internal/fog_chamber_full_training_checkpoint/final.pth",
+  "source_checkpoint_sha256": "4c8d4760f036576e598ccca3f19cd4bda9c59a2321a614f609901d6ef8deb07e",
+  "source_epoch": 50,
+  "source_keys": [
+    "args",
+    "epoch",
+    "model_state_dict",
+    "optimizer_state_dict"
+  ],
+  "model_type": "ResidualNAFNetRGB",
+  "width": 32,
+  "middle_blocks": 12,
+  "enc_blocks": [
+    2,
+    2,
+    4,
+    8
+  ],
+  "dec_blocks": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "original_source_checkpoint": "benchmark_from_chpc/checkpoints/nafnet_fc/final.pth"
+}

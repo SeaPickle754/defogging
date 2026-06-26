@@ -1,0 +1,9 @@
+{
+  "model_name": "fog_chamber_nafnet",
+  "model_type": "residual_rgb",
+  "width": 32,
+  "middle_blocks": 12,
+  "enc_blocks": [2, 2, 4, 8],
+  "dec_blocks": [2, 2, 2, 2],
+  "checkpoint": "fog_chamber_nafnet_model_state_20260615.pth"
+}

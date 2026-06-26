@@ -1,0 +1,29 @@
+{
+  "source_manifest": "project/manifest_20260603.json",
+  "fog_chamber_checkpoint_sha256": "6f430b315e5de74a520ca8a5c3b76314718752b6f29d5c4cd61286a8d52e746a",
+  "synthetic_finetuned": {
+    "run_dir": "outputs/synthetic_finetuned_nafnet",
+    "test_batches": 500,
+    "test_loss": 0.06816166050732136,
+    "test_psnr": 21.17396944812985,
+    "best_val_psnr": 21.376884935637975
+  },
+  "mixed_realhaze": {
+    "run_dir": "outputs/mixed_realhaze_from_fog_chamber_nafnet_20260603",
+    "test_n": 10,
+    "test_mae": 0.07413551881909371,
+    "test_psnr": 20.708159912679005,
+    "test_ssim": 0.682747995853424,
+    "best_epoch": 39,
+    "stopped_epoch": 57
+  },
+  "ntire26": {
+    "run_dir": "outputs/ntire26_from_fog_chamber_nafnet_20260603",
+    "test_n": 2,
+    "test_mae": 0.0434532705694437,
+    "test_psnr": 24.773857541031305,
+    "test_ssim": 0.7703565657138824,
+    "best_epoch": 15,
+    "stopped_epoch": 29
+  }
+}

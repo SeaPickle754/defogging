@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# Training outputs and local data
+checkpoints/
+outputs/
+results_raw/
+logs/
+validation/
+review_sheets/
+visuals/
+test_predictions/
+predictions/
+wandb/
+runs/
+
+# Large model files
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Large media/data artifacts
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.h5
+*.hdf5
+*.lmdb
+
+# LaTeX build byproducts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# OS/editor
+.DS_Store
+*~
+*.bak_*

@@ -1,37 +1,51 @@
-# Upload checklist
+# Upload Checklist
 
-## GitHub repository
+## GitHub Repository
 
-Commit the contents of this staging folder as ordinary Git files.
+Commit source code, documentation, model metadata, and the small `results/` tables.
 
-## GitHub Release assets
+The `results/` folder is small enough for Git, but it has more than 100 files. Use the command line instead of GitHub's browser uploader:
 
-Attach these checkpoint files as release assets rather than committing them:
+```bash
+git status --short
+git add results
+git commit -m "Add computational defogging result tables"
+git push origin main
+```
+
+## Kaggle Model Asset
+
+Upload model weights and inference metadata to:
+
+https://www.kaggle.com/models/alingold/fog-removal
+
+Expected files:
 
 - `fog_chamber_nafnet_model_state_20260615.pth`
 - `synthetic_finetuned_nafnet_model_state_20260615.pt`
+- `run_config_fog_chamber_nafnet.json`
+- `run_config_synthetic_finetuned_nafnet.json`
 - `SHA256SUMS.txt`
+- `checkpoints_manifest.csv`
 
-Do not upload task-specific O-HAZE/NH-HAZE or NTIRE checkpoints for this release.
+## Kaggle Datasets
 
-## Kaggle dataset upload
+Fog-chamber dataset:
 
-Upload the fog-chamber fog images and matched clear targets together:
+- https://www.kaggle.com/datasets/alingold/fog-chamber
 
-- fog images: `VerticalFilter_MediumFog_Redo_3-21-26_aligned`
-- matched clear targets: `archive_gt_matched`
-- metadata: `manifest.csv`
-- summary: `summary.json`
+Synthetic fine-tuning source dataset:
 
-Upload qualitative real-fog examples:
+- https://www.kaggle.com/datasets/kaggleprollc/mapillary-vistas-image-data-collection
 
-- aircraft-window fog examples: one combined folder containing current and legacy examples
-- free-flowing fog examples
+Source image archive:
 
-## Do not upload to Git
+- https://www.kaggle.com/datasets/rhtsingh/130k-images-512x512-universal-image-embeddings
 
-- checkpoint binaries
-- raw datasets
+## Do Not Upload To Git
+
+- checkpoint binaries (`*.pth`, `*.pt`, `*.ckpt`, `*.safetensors`)
+- raw image datasets
 - rendered prediction folders
 - demo videos
 - private CHPC scripts

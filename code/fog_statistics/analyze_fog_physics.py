@@ -1173,7 +1173,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--clear-root",
         type=Path,
-        default=Path("archive_gt_matched"),
+        default=Path("ground_truth_matched"),
     )
     parser.add_argument(
         "--outdoor-fog-dir",

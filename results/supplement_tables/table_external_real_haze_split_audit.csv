@@ -1,0 +1,2 @@
+model,train_n,val_n,test_n,train_test_overlap,val_test_overlap
+Mixed real haze,80,10,10,0,0

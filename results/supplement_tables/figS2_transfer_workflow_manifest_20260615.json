@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-06-15T11:11:24",
+  "copied_from": "project/unified_fig_generation/make_fig2_4_from_20260602.py",
+  "copied_script": "./fog_imager_3/Computational_DeFogging_Supplement_20260615/make_figS2_transfer_workflow_20260615.py",
+  "synthetic_outdoor_run": "outputs/synthetic_finetuned_nafnet",
+  "synthetic_outdoor_airplane_outputs": "outputs/synthetic_finetuned_nafnet_airplane_all",
+  "task_specific_public_haze_outputs": "outputs/mixed_realhaze_from_fog_chamber_nafnet_20260603",
+  "legacy_airplane_input_dir": "project/airplane/legacy_20260523_inputs",
+  "public_fixed_input_dir": "project/public_realhaze/figure_inputs_20260603",
+  "figures": [
+    "figures/supplement/figS_transfer_workflow_schematic.pdf",
+    "figures/supplement/figS_transfer_workflow_schematic.png"
+  ],
+  "commands": [
+    "python ./fog_imager_3/Computational_DeFogging_Supplement_20260615/make_figS2_transfer_workflow_20260615.py"
+  ]
+}

@@ -1,11 +1,18 @@
-# Local path audit
+# Local Path Audit
 
-The staging pass removed known private workstation and CHPC path defaults from public-facing documentation and active helper scripts.
-
-Before upload, run:
+Before upload, check for private workstation or CHPC paths:
 
 ```bash
 rg -n "/home/|/mnt/|/media/|/scratch|@|u[0-9]{7}" .
 ```
 
-Expected remaining matches should be reviewed case by case. Result CSVs should use dataset-relative paths where possible.
+Expected matches should be reviewed case by case. Public docs should use relative paths, Kaggle URLs, or placeholders such as `path/to/foggy_images`.
+
+Also check for stale dataset folder names:
+
+```bash
+rg -n "archive_gt_matched" --glob '!docs/LOCAL_PATH_AUDIT.md' .
+rg -n "general_code" --glob '!docs/LOCAL_PATH_AUDIT.md' .
+```
+
+The public paired-target folder name should be `ground_truth_matched/`, and synthetic fine-tuning imports should resolve to bundled code.

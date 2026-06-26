@@ -2,8 +2,13 @@
 
 This repository contains the code and lightweight result files used for the computational defogging paper.
 
-Large image datasets, trained checkpoints, rendered prediction folders, and videos are released on kaggle: https://www.kaggle.com/models/alingold/fog-removal
-https://www.kaggle.com/datasets/alingold/fog-chamber
+Large image datasets, trained checkpoints, rendered prediction folders, and videos are released on kaggle: 
+
+model weights: https://www.kaggle.com/models/alingold/fog-removal
+
+fog-chamber dataset: https://www.kaggle.com/datasets/alingold/fog-chamber
+
+synthetic fine tuning dataset: https://www.kaggle.com/datasets/kaggleprollc/mapillary-vistas-image-data-collection
 
 ## Repository layout
 

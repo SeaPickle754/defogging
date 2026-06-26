@@ -1,0 +1,31 @@
+{
+  "checkpoint": "synthetic_finetuned_nafnet_model_state_20260615.pt",
+  "device": "cpu",
+  "tile_size": 512,
+  "tile_overlap": 64,
+  "model_config": {
+    "model_type": "residual_rgb",
+    "width": 32,
+    "middle_blocks": 12,
+    "enc_blocks": [
+      2,
+      2,
+      4,
+      8
+    ],
+    "dec_blocks": [
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "elapsed_seconds": 13.619167804718018,
+  "rows": [
+    {
+      "input": "../code/synthetic_finetuning/spatial_foggy.jpg",
+      "output": "spatial_foggy_defogged.png",
+      "status": "written"
+    }
+  ]
+}

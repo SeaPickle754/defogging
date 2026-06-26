@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 from dataclasses import asdict, fields
 from pathlib import Path
-from tkinter import BOTH, HORIZONTAL, LEFT, RIGHT, X, Button, DoubleVar, Frame, Label, Scale, Tk, filedialog, messagebox, ttk
+from tkinter import BOTH, HORIZONTAL, LEFT, RIGHT, X, Button, DoubleVar, Frame, Label, Scale, Tk, filedialog, messagebox, ttk, Canvas, Y
 
 import numpy as np
 from PIL import Image, ImageTk
@@ -97,16 +97,36 @@ class SpatialFogGui:
         button_row3.pack(fill=X, pady=(0, 8))
         Button(button_row3, text="Save foggy", command=self.save_foggy).pack(side=LEFT, padx=2)
         Button(button_row3, text="Save preview", command=self.save_preview).pack(side=LEFT, padx=2)
-
         self.status = Label(left, text="", anchor="w", justify=LEFT, wraplength=520)
         self.status.pack(fill=X, pady=(0, 6))
 
-        slider_frame = ttk.Frame(left)
-        slider_frame.pack(fill=BOTH, expand=True)
-        preset = SpatialFogPreset()
+
+        canvas = Canvas(left)
+        scrollbar = ttk.Scrollbar(left, orient="vertical", command=canvas.yview)
+
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        scrollbar.pack(side=RIGHT, fill=Y)
+        canvas.pack(side=LEFT, fill=BOTH, expand=True)
+
+        slider_frame = ttk.Frame(canvas)
+        window = canvas.create_window((0, 0), window=slider_frame, anchor="nw")
+
+        def update_scrollregion(event):
+            canvas.configure(scrollregion=canvas.bbox("all"))
+
+        slider_frame.bind("<Configure>", update_scrollregion)
+
+        def resize_frame(event):
+            canvas.itemconfigure(window, width=event.width)
+
+        canvas.bind("<Configure>", resize_frame)
+
+
+        preset=SpatialFogPreset()
         for key, label, low, high, resolution in SLIDERS:
             row = Frame(slider_frame)
-            row.pack(fill=X, pady=1)
+            row.pack(fill=X, pady=0.0)
             Label(row, text=label, width=22, anchor="w").pack(side=LEFT)
             var = DoubleVar(value=float(getattr(preset, key)))
             self.vars[key] = var
@@ -202,6 +222,7 @@ class SpatialFogGui:
     def random_seed(self) -> None:
         self.vars["seed"].set(float((int(self.vars["seed"].get()) * 1664525 + 1013904223) % 10000))
         self._schedule_update()
+        self.update_preview()
 
     def reset(self) -> None:
         preset = SpatialFogPreset()

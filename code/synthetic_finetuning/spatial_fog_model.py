@@ -13,7 +13,7 @@ from typing import Any
 import numpy as np
 from PIL import Image, ImageFilter
 
-CODE_DIR = Path(__file__).resolve().parents[1] / "general_code"
+CODE_DIR = Path(__file__).resolve().parents[1] / "nafnet_finetuning"
 sys.path.insert(0, str(CODE_DIR))
 
 from synth_fog_tools import _make_depth_like_map, _make_geometric_depth_prior, load_rgb, save_rgb  # noqa: E402

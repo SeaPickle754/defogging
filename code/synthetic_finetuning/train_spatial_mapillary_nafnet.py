@@ -26,7 +26,7 @@ from torchvision.utils import save_image
 from tqdm import tqdm
 
 HERE = Path(__file__).resolve().parent
-CODE_DIR = HERE.parents[0] / "general_code"
+CODE_DIR = HERE.parents[0] / "code"
 sys.path.insert(0, str(CODE_DIR))
 sys.path.insert(0, str(HERE))
 

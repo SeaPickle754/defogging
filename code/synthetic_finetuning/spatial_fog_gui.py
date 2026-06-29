@@ -11,6 +11,11 @@ from tkinter import Toplevel
 import numpy as np
 from PIL import Image, ImageTk
 
+# deep bump height map functions
+from transformers import pipeline
+#import module_normals_to_height
+#import module_lowres_to_highres
+
 from spatial_fog_model import (
     SpatialFogPreset,
     make_preview_panel,
@@ -73,6 +78,10 @@ class SpatialFogGui:
         self.paint_strength = 0.05
         self._build_layout()
         self._load_current_image()
+        self.depth_model = pipeline(
+            "depth-estimation",
+            model="Intel/zoedepth-nyu-kitti"
+        )
         self._schedule_update()
 
     def _collect_default_images(self) -> list[Path]:
@@ -80,6 +89,51 @@ class SpatialFogGui:
         if not image_dir.exists():
             return []
         return sorted(path for path in image_dir.iterdir() if path.suffix.lower() in VALID_SUFFIXES)
+    """
+    def load_fog_mask(self):
+        # HWC -> CHW
+        inp = np.transpose(self.clear_rgb, (2, 0, 1)).astype(np.float32)
+
+        if inp.max() > 1.0:
+            inp /= 255.0
+
+        normals = module_color_to_normals.apply(inp, "LARGE", None)
+        curvature = module_normals_to_height.apply(normals, "SMALL", None)
+
+        # CHW -> HWC
+        curvature = np.transpose(curvature, (1, 2, 0))
+
+        mask = curvature.mean(axis=2)
+        mask = (mask - mask.min()) / max(mask.max() - mask.min(), 1e-6)
+        mask = mask
+
+        self.paint_mask = mask
+        self._schedule_update()
+    """
+    def load_fog_mask(self):
+        if self.clear_rgb is None:
+            return
+
+        image = Image.fromarray(
+            (self.clear_rgb * 255).astype(np.uint8)
+        )
+
+        result = self.depth_model(image)
+
+        depth = np.array(result["depth"]).astype(np.float32)
+
+        # normalize to 0-1
+        depth -= depth.min()
+        depth /= max(depth.max(), 1e-6)
+
+        # Optional:
+        # Near = white, far = black.
+        # If you want farther objects to get MORE fog:
+        #depth = 1.0 - depth
+
+        self.paint_mask = depth
+
+        self._schedule_update()
     def open_paint(self):
 
         if self.clear_rgb is None:
@@ -186,6 +240,8 @@ class SpatialFogGui:
         Button(button_row3, text="Save foggy", command=self.save_foggy).pack(side=LEFT, padx=2)
         Button(button_row3, text="Save preview", command=self.save_preview).pack(side=LEFT, padx=2)
         Button(button_row3, text="Paint Fog Depth", command = self.open_paint).pack(side=LEFT, padx=2)
+        Button(button_row3, text="Load Mask", command = self.load_fog_mask).pack(side=LEFT, padx=2)
+
         self.status = Label(left, text="", anchor="w", justify=LEFT, wraplength=520)
         self.status.pack(fill=X, pady=(0, 6))
 

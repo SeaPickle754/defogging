@@ -121,19 +121,19 @@ def synthesize_spatial_fog(
         random_depth = _make_depth_like_map(height, width, seed=int(preset.seed) + 101)
         depth_like = _normalize(0.82 * geometric + 0.18 * random_depth)
 
+    beta_map = float(preset.beta_mean) * (
+        1.0 + float(preset.beta_variation) * (2.0 * field - 1.0)
+    )
+    beta_map = np.clip(beta_map, 0.03, 8.0)
     if extra_depth is not None:
-        beta_map = float(preset.beta_mean) * (
-            1.0 + float(preset.beta_variation) * (2.0 * field - 1.0)
-        )
-        beta_map = np.clip(beta_map, 0.03, 8.0)
+        mask = extra_depth > 0
 
-# Increase fog density where the user painted.
-        beta_map = beta_map * (1.0 + preset.paint_weight * extra_depth)
-
-        transmission = np.exp(
-            -beta_map * np.clip(depth_like, 0.0, 1.0)
-        )[:, :, None]
-
+        beta_map[mask] = preset.beta_mean * (
+            1.0 + preset.paint_weight * extra_depth[mask]
+    )
+    transmission = np.exp(
+        -beta_map * np.clip(depth_like, 0.0, 1.0)
+    )[:, :, None]
     rng = np.random.default_rng(int(preset.seed) + 202)
     color_field = np.stack(
         [

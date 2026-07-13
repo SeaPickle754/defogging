@@ -1,0 +1,11 @@
+parameter,baseline,tuned
+beta,1.55,1.8089517048461121
+airlight_r,0.69,0.62
+airlight_g,0.71,0.6406603229737036
+airlight_b,0.77,0.68
+bloom_strength,0.08,0.04630446342497217
+blur_radius,0.6,0.06630467580696618
+contrast_gamma,0.98,1.16
+saturation_mix,0.24,0.18020774112814064
+noise_strength,0.01,0.0013435521569942184
+edge_veil_strength,0.18,0.317623659843978

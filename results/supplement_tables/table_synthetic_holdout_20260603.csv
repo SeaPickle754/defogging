@@ -1,0 +1,2 @@
+method,count,mae,psnr,best_val_psnr
+Synthetic-fog NAFNet,43,0.013585,35.5664,37.0713

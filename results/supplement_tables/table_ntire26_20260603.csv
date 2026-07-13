@@ -1,0 +1,2 @@
+split,model,n,mae,psnr,ssim
+Held-out 24-25,NTIRE NAFNet,2,0.0435,24.77,0.770

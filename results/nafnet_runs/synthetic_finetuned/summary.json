@@ -1,0 +1,97 @@
+{
+  "run_config": {
+    "model_name": "nafnet_rgb_fog",
+    "model_type": "residual_rgb",
+    "device": "cuda",
+    "mapillary_root": "Mapillary Vistas",
+    "preset_json": "project/20260612_synthetic_fog_nh-o-ntire_calib/presets/followup_base_mild_tv.json",
+    "spatial_preset": {
+      "name": "followup_base_mild_tv",
+      "beta_mean": 2.58,
+      "beta_variation": 0.94,
+      "field_scale_px": 924.0,
+      "field_octaves": 6,
+      "field_contrast": 1.2,
+      "vertical_gradient": 0.25,
+      "horizon_bias": 0.2,
+      "airlight_r": 0.7,
+      "airlight_g": 0.7,
+      "airlight_b": 0.73,
+      "airlight_variation": 0.06,
+      "warmth_bias": 0.0,
+      "bloom_strength": 0.28,
+      "bloom_radius": 12.0,
+      "blur_radius": 0.9,
+      "blur_fog_coupling": 0.22,
+      "saturation_mix": 0.22,
+      "contrast_gamma": 0.96,
+      "noise_strength": 0.008,
+      "edge_veil_strength": 0.18,
+      "seed": 2673
+    },
+    "airlight_jitter": 0.03,
+    "beta_mult_min": 0.55,
+    "beta_mult_max": 1.4,
+    "variation_mult_min": 0.6,
+    "variation_mult_max": 1.15,
+    "light_fog_prob": 0.2,
+    "identity_prob": 0.06,
+    "loss": "l1",
+    "color_loss_weight": 0.0,
+    "residual_tv_weight": 0.01,
+    "per_sample_seed_policy": "stable path hash plus base seed; train samples add per-call random offset",
+    "init_checkpoint": "release-assets/fog_chamber_nafnet_model_state_20260615.pth",
+    "patch_size": 512,
+    "batch_size": 2,
+    "epochs": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "seed": 723,
+    "split_counts": {
+      "train": 18000,
+      "val": 2000,
+      "test": 5000
+    },
+    "max_train_batches": 2600,
+    "max_val_batches": 300,
+    "max_test_batches": 500,
+    "run_dir": "outputs/synthetic_finetuned_nafnet",
+    "best_checkpoint": "outputs/synthetic_finetuned_nafnet/checkpoints/best_model.pt",
+    "last_checkpoint": "outputs/synthetic_finetuned_nafnet/checkpoints/last_model.pt",
+    "width": 32,
+    "middle_blocks": 12,
+    "enc_blocks": [
+      2,
+      2,
+      4,
+      8
+    ],
+    "dec_blocks": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "init_info": {
+      "checkpoint_path": "release-assets/fog_chamber_nafnet_model_state_20260615.pth",
+      "strict": true
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.08107839211534995,
+      "val_loss": 0.06639964851861199,
+      "val_psnr": 21.376884935637975,
+      "lr": 0.0
+    }
+  ],
+  "best_val_psnr": 21.376884935637975,
+  "test_metrics": {
+    "test_loss": 0.06816166050732136,
+    "test_psnr": 21.17396944812985,
+    "test_batches": 500
+  },
+  "elapsed_seconds": 1322.452627658844,
+  "timestamp": "2026-06-13T06:14:41.612281"
+}

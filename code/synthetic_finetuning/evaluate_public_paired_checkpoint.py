@@ -19,7 +19,7 @@ from skimage.metrics import peak_signal_noise_ratio, structural_similarity
 from tqdm import tqdm
 
 ROOT = Path(__file__).resolve().parents[1]
-CODE_DIR = ROOT / "general_code"
+CODE_DIR = ROOT / "nafnet_finetuning"
 sys.path.insert(0, str(CODE_DIR))
 
 from infer_nafnet_fog import build_model, tiled_inference  # noqa: E402

@@ -1,0 +1,14 @@
+dataset,reference,method,protocol_note,psnr,ssim,source
+O-HAZE,Chen et al. ECCV 2024 PTTD,NAFNet,reported real-captured dataset table,18.16,0.7783,Prompt-Based Test-Time Real Image Dehazing
+O-HAZE,Chen et al. ECCV 2024 PTTD,NAFNet-PTTD,reported real-captured dataset table,19.63,0.8094,Prompt-Based Test-Time Real Image Dehazing
+O-HAZE,Chen et al. ECCV 2024 PTTD,AECRNet-PTTD,reported real-captured dataset table,20.23,0.8145,Prompt-Based Test-Time Real Image Dehazing
+O-HAZE,Chen et al. CVPR 2025 DehazeXL,MixDehazeNet-b,reported O-HAZY/O-HAZE table,20.67,0.7293,Tokenize Image Patches: Global Context Fusion for Effective Haze Removal in Large Images
+O-HAZE,Chen et al. CVPR 2025 DehazeXL,DehazeXL,reported O-HAZY/O-HAZE table,21.49,0.7348,Tokenize Image Patches: Global Context Fusion for Effective Haze Removal in Large Images
+NH-HAZE,Chen et al. ECCV 2024 PTTD,NAFNet,reported real-captured dataset table,13.17,0.5367,Prompt-Based Test-Time Real Image Dehazing
+NH-HAZE,Chen et al. ECCV 2024 PTTD,NAFNet-PTTD,reported real-captured dataset table,14.08,0.5765,Prompt-Based Test-Time Real Image Dehazing
+NH-HAZE,Chen et al. ECCV 2024 PTTD,AECRNet-PTTD,reported real-captured dataset table,14.54,0.5932,Prompt-Based Test-Time Real Image Dehazing
+NH-Haze2,NTIRE 2021 Challenge,DWT dehaze,extended 35-pair NH-Haze2 challenge test; best PSNR,21.0761,0.8393,NTIRE 2021 NonHomogeneous Dehazing Challenge Report
+NH-Haze2,NTIRE 2021 Challenge,NTUGICE LINLAB,extended 35-pair NH-Haze2 challenge test; best SSIM,20.8983,0.8441,NTIRE 2021 NonHomogeneous Dehazing Challenge Report
+NH-Haze2,NTIRE 2021 Challenge,no processing baseline,extended 35-pair NH-Haze2 challenge test,10.936,0.565,NTIRE 2021 NonHomogeneous Dehazing Challenge Report
+NTIRE 2026 nighttime,HistoFusionNet,reported first-place benchmark; challenge protocol not local split,27.88,0.905,HistoFusionNet: A Histogram-Aware Fusion Network for Nighttime Image Dehazing
+NTIRE 2026 train GT,Ours,local held-out train-GT IDs 24-25; not official validation/test,24.77,0.770,20260603 fog-chamber initialized NTIRE train-GT run

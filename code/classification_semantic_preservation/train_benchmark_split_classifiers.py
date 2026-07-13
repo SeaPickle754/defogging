@@ -32,7 +32,7 @@ import classification_train_resnet50_base as base  # noqa: E402
 ROOT = Path(os.environ.get("DEFOG_WORK_ROOT", "."))
 DEFAULT_BENCHMARK = ROOT / "fog_chamber_nafnet/metrics.csv"
 DEFAULT_FOG_ROOT = Path(os.environ.get("FOG_CHAMBER_FOG_ROOT", "data/VerticalFilter_MediumFog_Redo_3-21-26_aligned"))
-DEFAULT_GT_ROOT = Path(os.environ.get("FOG_CHAMBER_GT_ROOT", "data/archive_gt_matched"))
+DEFAULT_GT_ROOT = Path(os.environ.get("FOG_CHAMBER_GT_ROOT", "data/ground_truth_matched"))
 DEFAULT_OUTPUT = ROOT / "outputs/fog_chamber_classification_benchmark_20260604"
 SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png"}
 

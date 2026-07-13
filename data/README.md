@@ -1,25 +1,50 @@
 # Data
 
-Raw image datasets are not staged in this GitHub upload folder.
+Raw image datasets are not stored in Git. Download the large image assets from Kaggle and arrange them locally before running training or paired evaluation.
 
-Recommended separate dataset uploads:
+## Public Assets
 
-- paired fog-chamber fog images: `VerticalFilter_MediumFog_Redo_3-21-26_aligned`
-- matched clear targets for those fog images: `archive_gt_matched`
-- aircraft-window fog examples: one combined folder containing current and legacy examples
-- free-flowing fog examples
+- Fog-chamber dataset: https://www.kaggle.com/datasets/alingold/fog-chamber
+- Mapillary Vistas clear images for synthetic fine-tuning: https://www.kaggle.com/datasets/kaggleprollc/mapillary-vistas-image-data-collection
+- Source archive for display images: https://www.kaggle.com/datasets/rhtsingh/130k-images-512x512-universal-image-embeddings
 
-The prepared clear-target subset contains 5,495 clear target images matching the filenames and categories in the fog-chamber fog-image folder, plus `manifest.csv` and `summary.json`.
+The model weights are separate from the image datasets:
 
-Prepared qualitative real-fog upload folders:
+- https://www.kaggle.com/models/alingold/fog-removal
 
-- `kaggle_aircraft_window_fog_20260615`: 43 aircraft-window fog examples in one folder.
-- `kaggle_free_flowing_fog_20260615`: 99 free-flowing fog examples.
+## Expected Local Layout
 
-External data expected by some workflows:
+For paired fog-chamber workflows, the important requirement is matching category and filename:
 
-- Mapillary Vistas clear images for synthetic fine-tuning
-- O-HAZE and NH-HAZE paired real-haze datasets
-- NTIRE 2026 nighttime haze training pairs
+```text
+data/fog_chamber/
+  foggy/
+    apparel/image0000.jpg
+    cars/image0000.jpg
+    ...
+  ground_truth_matched/
+    apparel/image0000.jpg
+    cars/image0000.jpg
+    ...
+```
 
-Those third-party datasets should not be redistributed unless their licenses allow it.
+The matched clear targets contain 5,495 images across six categories. The paper split assigns every 10th sorted image within each category to the held-out test split, giving 552 test pairs.
+
+## Qualitative Real-Fog Examples
+
+The paper also used unpaired real-fog examples:
+
+- `aircraft_window_fog/`: aircraft-window examples; qualitative only.
+- `free_flowing_fog/`: free-flowing outdoor fog examples; qualitative only.
+
+These examples do not have paired clear targets, so they are used for visual transfer tests rather than PSNR/SSIM evaluation.
+
+## External Datasets
+
+Some advanced workflows require external datasets that are not redistributed here:
+
+- O-HAZE and NH-HAZE paired real-haze datasets.
+- NTIRE 2026 nighttime haze training pairs.
+- Third-party model source trees for the full 30-model benchmark.
+
+Check each external dataset or model repository for its own license before downloading or redistributing it.

@@ -1,5 +1,13 @@
 *.pt
+SHA256SUMS.txt
 *.pth
 *.jpg
 *.png
 __pycache__
+comparisons/
+*.out
+*.log
+kaggle/
+getDataset.py
+createComparison.sh
+code/synthetic_finetuning/outputs/
